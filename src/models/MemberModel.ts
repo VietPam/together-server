@@ -1,7 +1,7 @@
 import { AgoraToken } from "../models/AgoraModel"
 
 export interface MemberModel {
-    socketid: string;
+    socketId: string;
     username: string;
     offer?: Object;
     answer?: Object;

@@ -2,7 +2,7 @@ import { MemberModel } from "./MemberModel";
 
 export interface RoomModel {
     roomName: string;
-    roomId: string;
+    roomId?: string;
     roomCode: number;
     description: string;
     members: MemberModel[];
