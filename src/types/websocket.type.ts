@@ -6,7 +6,7 @@ import { RoomModel } from "models/RoomModel";
 export interface ServerToClientEvents {
     noArg: () => void;
     basicEmit: (a: number, b: string, c: Buffer) => void;
-    withAck: (d: string, callback: (e: number)) => void;
+    withAck: (d: string, callback: (e: number) => void) => void;
     newMessageToGroup: (d: EmitMessageType) => void;
     newMemberJoinRoom: (member: MemberModel, room: RoomModel) => void;
     memberLeaveRoom: (member: MemberModel, room: RoomModel) => void;
