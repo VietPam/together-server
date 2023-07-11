@@ -64,5 +64,4 @@ export class RoomService {
         const room = RoomRepository.findByRoomCode(roomCode);
         return room;
     }
-
 }

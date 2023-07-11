@@ -1,6 +1,6 @@
 import express, { Express } from 'express';
 import cors from 'cors'
-import { roomRouter } from 'routers/room';
+import { roomRouter } from '../src/routers/room';
 const app: Express = express();
 import { createServer } from "http"
 import { Server } from "socket.io"
