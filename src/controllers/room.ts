@@ -1,11 +1,11 @@
-import { CreateRoomResponse } from "dto/response/CreateRoomResponse";
-import { CreateRoomRequestDTO } from "../dto/request/CreateRoomRequestDTO";
 import { Request, Response } from "express";
-import { RoomRepository } from "repository/RoomRepository";
-import { RoomService } from "services/RoomService";
-import { AgoraService } from "services/AgoraService";
-import { JoinRoomRequestDTO } from "dto/request/JoinRoomRequestDTO";
-import { JoinRoomResponse } from "dto/response/JoinRoomResponse";
+import { CreateRoomRequestDTO } from "../dto/request/CreateRoomRequestDTO";
+import { JoinRoomRequestDTO } from "../dto/request/JoinRoomRequestDTO";
+import { CreateRoomResponse } from "../dto/response/CreateRoomResponse";
+import { JoinRoomResponse } from "../dto/response/JoinRoomResponse";
+import { AgoraService } from "../services/AgoraService";
+import { RoomService } from "../services/RoomService";
+
 export async function createRoomHandler(
     req: Request<{}, {}, CreateRoomRequestDTO>,
     res: Response<string | CreateRoomResponse>
@@ -20,8 +20,11 @@ export async function createRoomHandler(
             tokenType,
             channel: room.roomId as string,
         });
-    }
-    catch (error: any) {
+        res.send({
+            room,
+            agora: { ...req.body.agora, ...token, channel: channel },
+        });
+    } catch (error: any) {
         console.log(error);
         return res.status(500).send(req.toString());
     }
@@ -33,7 +36,7 @@ export async function requestJoinRoom(
 ) {
     try {
         const room = RoomService.requestJoinRoom(req.body);
-        if (!room) return res.status(400).send("Room not found");
+        if (!room) return res.status(404).send("Room Not Found");
         const { uid, role, tokenType } = req.body.agora;
         const channel = room.roomId as string;
         const token = AgoraService.generateToken({

@@ -2,7 +2,7 @@ import { JoinRoomDTO } from "dto/onMessage/onJoinRoom";
 import { CreateRoomRequestDTO } from "dto/request/CreateRoomRequestDTO";
 import { MemberModel } from "models/MemberModel";
 import { RoomModel } from "models/RoomModel";
-import { RoomRepository } from "repository/RoomRepository";
+import { RoomRepository } from "../repository/RoomRepository";
 import { JoinRoomRequestDTO } from "../dto/request/JoinRoomRequestDTO";
 export class RoomService {
     static joinRoom({

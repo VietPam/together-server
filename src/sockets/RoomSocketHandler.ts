@@ -1,6 +1,6 @@
 import { OnJoinRoomDTO } from "dto/onMessage/onJoinRoom";
 import { EmitMessageType, OnNewMessageType } from "models/MessageModel";
-import { RoomService } from "services/RoomService";
+import { RoomService } from "../services/RoomService";
 import { Server, Socket } from "socket.io";
 import { ClientToServerEvents, InterServerEvents, ServerToClientEvents, SocketData } from "types/websocket.type";
 

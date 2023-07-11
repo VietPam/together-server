@@ -1,5 +1,5 @@
 import { RoomModel } from "models/RoomModel";
-import { generateString } from "utils/generate";
+import { generateString } from "../utils/generate";
 
 export class RoomRepository {
     static rooms: RoomModel[] = [];

@@ -5,11 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const room_1 = require("routers/room");
-const app = (0, express_1.default)();
+const room_1 = require("../src/routers/room");
 const http_1 = require("http");
 const socket_io_1 = require("socket.io");
 const RoomSocketHandler_1 = require("sockets/RoomSocketHandler");
+const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
     origin: "*",
 }));

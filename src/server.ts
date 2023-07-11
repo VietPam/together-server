@@ -1,13 +1,12 @@
 import express, { Express } from 'express';
 import cors from 'cors'
 import { roomRouter } from '../src/routers/room';
-const app: Express = express();
 import { createServer } from "http"
 import { Server } from "socket.io"
 import { ClientToServerEvents, InterServerEvents, ServerToClientEvents, SocketData } from 'types/websocket.type';
-import { roomSocketHandler } from 'sockets/RoomSocketHandler';
+import { roomSocketHandler } from '../src/sockets/RoomSocketHandler';
 import { AddressInfo } from "net";
-
+const app: Express = express();
 app.use(
     cors({
         origin: "*",

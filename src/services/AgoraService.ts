@@ -1,6 +1,6 @@
 import { RtcRole, RtcTokenBuilder, RtmTokenBuilder } from "agora-access-token";
-import { AgoraConfig } from "constants/agoraConfig";
-import { AgoraModel, AgoraToken } from "models/AgoraModel";
+import { AgoraConfig } from "../constants/agoraConfig";
+import { AgoraModel, AgoraToken } from "../models/AgoraModel";
 
 export class AgoraService {
     static generateToken(agora: AgoraModel): AgoraToken {
@@ -9,7 +9,6 @@ export class AgoraService {
         const expiredTime = 10000;
         const { appCertificate, appId } = AgoraConfig;
         const { channel, uid } = agora;
-
         const rtcToken = RtcTokenBuilder.buildTokenWithUid(
             appId,
             appCertificate,
@@ -17,16 +16,14 @@ export class AgoraService {
             uid,
             role,
             expiredTime
-        )
-
+        );
         const rtmToken = RtmTokenBuilder.buildToken(
             appId,
             appCertificate,
             channel,
             uid,
-            role,
-        )
-
+            role
+        );
         return { rtcToken, rtmToken };
     }
 }
