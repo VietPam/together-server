@@ -3,7 +3,7 @@ import { CreateRoomRequestDTO } from "dto/request/CreateRoomRequestDTO";
 import { MemberModel } from "models/MemberModel";
 import { RoomModel } from "models/RoomModel";
 import { RoomRepository } from "repository/RoomRepository";
-
+import { JoinRoomRequestDTO } from "../dto/request/JoinRoomRequestDTO";
 export class RoomService {
     static joinRoom({
         user,
@@ -56,5 +56,13 @@ export class RoomService {
         return newRoom;
     }
 
+    static requestJoinRoom({
+        user,
+        room: { roomCode },
+    }: JoinRoomRequestDTO): RoomModel | null {
+        if (!roomCode) return null;
+        const room = RoomRepository.findByRoomCode(roomCode);
+        return room;
+    }
 
 }
