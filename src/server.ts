@@ -5,7 +5,8 @@ const app: Express = express();
 import { createServer } from "http"
 import { Server } from "socket.io"
 import { ClientToServerEvents, InterServerEvents, ServerToClientEvents, SocketData } from 'types/websocket.type';
-
+import { roomSocketHandler } from 'sockets/RoomSocketHandler';
+import { AddressInfo } from "net";
 
 app.use(
     cors({
@@ -36,6 +37,14 @@ const io = new Server<
     }
 });
 io.of("np").on("connection", (socket) => {
-    roomSocketHandler
+    roomSocketHandler(io, socket);
+    console.log(socket.id);
+});
+
+// start my server
+server.listen(process.env.PORT || 8999, () => {
+    console.log(
+        `Server started on port ${(server.address() as AddressInfo).port} `
+    )
 })
 
