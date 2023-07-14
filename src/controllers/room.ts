@@ -25,6 +25,7 @@ export async function createRoomHandler(
             agora: { ...req.body.agora, ...token, channel: channel },
         });
     } catch (error: any) {
+        console.log("Loi server, createRoomHandler");
         console.log(error);
         return res.status(500).send(req.toString());
     }
@@ -51,6 +52,8 @@ export async function requestJoinRoom(
             agora: { ...req.body.agora, ...token, channel: channel },
         });
     } catch (error: any) {
+        console.log("Loi server, requestJoinRoom");
+
         return res.status(500).send(req.toString());
     }
 }
