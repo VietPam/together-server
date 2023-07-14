@@ -37,7 +37,7 @@ const io = new Server<
 });
 io.of("np").on("connection", (socket) => {
     roomSocketHandler(io, socket);
-    console.log(socket.id);
+    console.log("socket id: ", socket.id);
 });
 
 // start my server

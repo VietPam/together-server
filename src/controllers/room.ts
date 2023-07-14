@@ -11,6 +11,7 @@ export async function createRoomHandler(
     res: Response<string | CreateRoomResponse>
 ) {
     try {
+        console.log("xu ly createRoomHandler");
         const room = RoomService.createRoom(req.body);
         const { uid, role, tokenType } = req.body.agora;
         const channel = room.roomId as string;
@@ -20,10 +21,17 @@ export async function createRoomHandler(
             tokenType,
             channel: room.roomId as string,
         });
+        console.log("uid: ", uid);
+        console.log("token: ", token);
         res.send({
             room,
             agora: { ...req.body.agora, ...token, channel: channel },
-        });
+
+        }
+
+        );
+        console.log("xu ly createRoomHandler DONE");
+
     } catch (error: any) {
         console.log("Loi server, createRoomHandler");
         console.log(error);
@@ -36,6 +44,7 @@ export async function requestJoinRoom(
     res: Response<JoinRoomResponse | string>
 ) {
     try {
+        console.log("xu ly request join room, requestJoinRoom");
         const room = RoomService.requestJoinRoom(req.body);
         if (!room) return res.status(404).send("Room Not Found");
         const { uid, role, tokenType } = req.body.agora;

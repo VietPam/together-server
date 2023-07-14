@@ -1,6 +1,6 @@
 export interface AgoraModel {
     uid: number;
-    role: "PUBLISHER" | "AUDIENCE";
+    role: "PUBLISHER" | "SUBSCRIBER";
     tokenType: "uid";
     channel: string;
 }
