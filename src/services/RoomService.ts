@@ -62,6 +62,7 @@ export class RoomService {
     }: JoinRoomRequestDTO): RoomModel | null {
         if (!roomCode) return null;
         const room = RoomRepository.findByRoomCode(roomCode);
+        console.log('requestJoinRoom, room: ', room);
         return room;
     }
 }
